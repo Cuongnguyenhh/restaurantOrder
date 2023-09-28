@@ -31,14 +31,6 @@ class StoresController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -81,16 +73,19 @@ class StoresController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        try{
+            $store = Stores::find($id);
+            return response()->json([
+              'status' =>'success',
+                'data' => $store,
+            ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-       
-
+        }catch(\Exception $e){
+            return response()->json([
+              'status' => 'error',
+              'message' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
