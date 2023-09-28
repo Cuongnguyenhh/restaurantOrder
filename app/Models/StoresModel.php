@@ -9,6 +9,15 @@ class StoresModel extends Model
 {
     use HasFactory;
     protected $table ='stores';
+    protected $fillable = [
+        'name',
+        'address',
+        'phone',
+        'phone',
+        'open_time',
+        'close_time',
 
+    ];
    protected $primaryKey = 'id';
+
 }
